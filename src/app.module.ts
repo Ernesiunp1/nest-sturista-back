@@ -13,7 +13,6 @@ import process from 'process';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRoot({
-
       ssl: process.env.STAGE === 'prod',
       extra: {
         ssl: process.env.STAGE === 'prod'
