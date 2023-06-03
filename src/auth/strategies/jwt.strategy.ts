@@ -7,32 +7,47 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { ConfigService } from "@nestjs/config";
 
+
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy( Strategy ){
+
 
     constructor( 
-        @InjectRepository(User)
-        private readonly userRepository: Repository<User>,
-        private readonly configService: ConfigService // Corrección aquí
-    ) {
+        @InjectRepository( User )
+        private readonly userRepository: Repository< User >,
+
+        configServirce: ConfigService
+      ){
+
         super({
-            secretOrKey: configService.get('JWT_SECRET'),
+            secretOrKey: configServirce.get('JWT_SECRET'),
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
-        });
+        })
     }
 
-    async validate(payload: JwtPayload): Promise<User> {
-        const { id } = payload;
-        const user = await this.userRepository.findOneBy({ id }); // Corrección aquí
+
+    async validate( payload: JwtPayload ): Promise< User > {
+
+      const  { id } =  payload
+
+      const user = await this.userRepository.findOneBy({ id })
 
         if (!user) {
-            throw new UnauthorizedException("Token Inválido");
+            throw new UnauthorizedException(" Token Invalido");
         }
        
+    
         if (!user.isActive) {
-            throw new UnauthorizedException("Usuario Inactivo");
+            throw new UnauthorizedException(" Usuario Inactivo");
         }
          
-        return user;
+           
+      return user
+
     }
+
+
+
+
+
 }
