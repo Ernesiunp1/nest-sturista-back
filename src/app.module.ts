@@ -15,10 +15,11 @@ import process from 'process';
     TypeOrmModule.forRoot({
 
       ssl: process.env.STAGE === 'prod',
-      extra: process.env.STAGE === 'prod'
+      extra: {
+        ssl: process.env.STAGE === 'prod'
         ? {rejectUnauthorized: false}
         : null,
-
+      },
       type: 'postgres',
       host: 'localhost',
       port:   5432,
