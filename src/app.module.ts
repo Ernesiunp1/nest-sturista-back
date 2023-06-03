@@ -9,7 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import process from 'process';
 
 @Module({
-  imports: [
+  imports: [ 
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRoot({

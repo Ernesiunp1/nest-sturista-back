@@ -16,3 +16,5 @@
 ```
 docker-compose up 
 ```
+
+# production mode
