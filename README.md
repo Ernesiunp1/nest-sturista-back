@@ -18,3 +18,4 @@ docker-compose up
 ```
 
 # production mode
+version corriendo en servidor heroku
