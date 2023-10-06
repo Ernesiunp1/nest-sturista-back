@@ -28,15 +28,7 @@ export class FilesController {
   }
 
 
-@Post('inmuebles')
-@UseInterceptors( FileInterceptor('file', {
-  fileFilter: fileFilter,
-  // limits: { fileSize: 1000 }
-  storage: diskStorage({
-    destination: './static/inmuebles',
-    filename: fileNamer
-  })
-}) )
+
 
 imagenInmuebles(
   @UploadedFile() file: Express.Multer.File
