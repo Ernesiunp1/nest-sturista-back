@@ -40,7 +40,7 @@ export class InmueblesController {
 
   @Patch(':id')
   update(
-    @GetUser() user: User,
+    
     @Param('id', ParseUUIDPipe) id: string, 
     @Body() updateInmuebleDto: UpdateInmuebleDto
     ){
