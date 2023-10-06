@@ -24,18 +24,9 @@ export class InmueblesService {
 
   
 
-  async create (createInmuebleDto: CreateInmuebleDto, user: User) {
+  async create (createInleDto: CreateInmuebleDto, user: User) {
 
     try {
-      const inmueble= this.inmuebleRepository.create( createInmuebleDto )
-      inmueble.user = user
-      
-      await this.inmuebleRepository.save(inmueble)
-      return {...inmueble, user}
-      
-    } catch (error) {
-      this.handlerDBExceptions(error)                        
-    }
 
   }
 
@@ -59,7 +50,7 @@ export class InmueblesService {
     let inmueble: Inmueble
 
        if(isUUID(termino)){
-           inmueble = await this.inmuebleRepository.findOneBy( { id: termino } )
+           inmueble = await this.inmuebleReposito.indOneBy( { id: termino } )
        }else {         
            inmueble=  await this.inmuebleRepository.findOneBy( { nombre_inmueble: termino } ) 
       }
